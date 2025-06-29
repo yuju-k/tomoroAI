@@ -32,12 +32,12 @@ const prompt = ai.definePrompt({
   name: 'parseTaskPrompt',
   input: {schema: ParseTaskInputSchema},
   output: {schema: ParseTaskOutputSchema},
-  prompt: `You are a task parsing AI.  Your job is to take in a task described in natural language, and parse it into a structured object with the following fields:
+  prompt: `You are a task parsing AI. Your job is to take in a task described in natural language, and parse it into a structured object with the following fields:
 
 - taskDescription: A short description of the task.
-- dueDate: The due date of the task, if specified.  If no due date is specified, leave blank.
-- priority: The priority of the task.  Must be one of 'high', 'medium', or 'low'.  If not specified, default to 'medium'.
-- recommendedTime: Suggest a good time of day to complete the task, like "Morning", "Afternoon", or "Evening". If not specified, leave blank.
+- dueDate: The due date of the task, if specified. If no due date is specified, leave blank.
+- priority: The priority of the task. Must be one of 'high', 'medium', or 'low'. If not specified, default to 'medium'.
+- recommendedTime: Based on the nature of the task, suggest the best time of day to complete it (e.g., "Morning", "Afternoon", "Evening"). For example, tasks requiring focus are good for the Morning, and creative tasks for the Afternoon. Always provide a recommendation.
 
 Here is the task:
 

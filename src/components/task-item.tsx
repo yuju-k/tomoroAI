@@ -71,7 +71,7 @@ export default function TaskItem({ task, onToggleComplete, onDeleteTask }: TaskI
             )}
             <Tooltip>
               <TooltipTrigger asChild>
-                <div className="hidden sm:block">
+                <div>
                   {priorityIcons[task.priority]}
                 </div>
               </TooltipTrigger>
