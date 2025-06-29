@@ -5,7 +5,7 @@ import type { Priority } from '@/lib/types';
 import { z } from 'zod';
 
 const formSchema = z.object({
-  task: z.string().min(3, 'Task must be at least 3 characters long.'),
+  task: z.string().min(3, '작업은 3자 이상이어야 합니다.'),
 });
 
 export async function addTaskAction(prevState: any, formData: FormData) {
@@ -15,7 +15,7 @@ export async function addTaskAction(prevState: any, formData: FormData) {
 
   if (!validatedFields.success) {
     return {
-      error: validatedFields.error.flatten().fieldErrors.task?.[0] || "Invalid input.",
+      error: validatedFields.error.flatten().fieldErrors.task?.[0] || "잘못된 입력입니다.",
     };
   }
 

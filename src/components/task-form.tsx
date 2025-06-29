@@ -1,6 +1,7 @@
 'use client';
 
-import { useEffect, useRef, useActionState } from 'react';
+import { useEffect, useRef } from 'react';
+import { useActionState } from 'react';
 import { useFormStatus } from 'react-dom';
 import { addTaskAction } from '@/app/actions';
 import { Button } from '@/components/ui/button';
@@ -25,7 +26,7 @@ function SubmitButton({ isAdding }: { isAdding: boolean }) {
       ) : (
         <Sparkles className="mr-2 h-4 w-4" />
       )}
-      Add Task
+      작업 추가
     </Button>
   );
 }
@@ -39,7 +40,7 @@ export default function TaskForm({ onTaskAdd, isAdding }: TaskFormProps) {
     if (state.error) {
       toast({
         variant: 'destructive',
-        title: 'Error',
+        title: '오류',
         description: state.error,
       });
     }
@@ -55,7 +56,7 @@ export default function TaskForm({ onTaskAdd, isAdding }: TaskFormProps) {
         <Input
           type="text"
           name="task"
-          placeholder="e.g., Send report by Friday, it's high priority"
+          placeholder="예: 금요일까지 보고서 보내기, 우선순위 높음"
           className="h-12 text-base"
           aria-label="New task input"
         />

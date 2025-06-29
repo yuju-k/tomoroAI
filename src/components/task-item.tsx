@@ -22,9 +22,9 @@ const priorityIcons = {
 };
 
 const priorityTooltips = {
-  high: 'High Priority',
-  medium: 'Medium Priority',
-  low: 'Low Priority',
+  high: '높은 우선순위',
+  medium: '중간 우선순위',
+  low: '낮은 우선순위',
 };
 
 export default function TaskItem({ task, onToggleComplete, onDeleteTask }: TaskItemProps) {
@@ -42,7 +42,7 @@ export default function TaskItem({ task, onToggleComplete, onDeleteTask }: TaskI
             id={`task-${task.id}`}
             checked={task.completed}
             onCheckedChange={() => onToggleComplete(task.id)}
-            aria-label={`Mark task ${task.description} as ${task.completed ? 'not completed' : 'completed'}`}
+            aria-label={`작업 ${task.description}을(를) ${task.completed ? '미완료로' : '완료로'} 표시`}
             className="h-5 w-5 rounded-full"
           />
           <div className="flex-1 space-y-1">
@@ -85,7 +85,7 @@ export default function TaskItem({ task, onToggleComplete, onDeleteTask }: TaskI
               size="icon"
               className="h-8 w-8 rounded-full opacity-0 group-hover:opacity-100 transition-opacity text-muted-foreground hover:text-destructive"
               onClick={() => onDeleteTask(task.id)}
-              aria-label={`Delete task ${task.description}`}
+              aria-label={`작업 ${task.description} 삭제`}
             >
               <Trash2 className="h-4 w-4" />
             </Button>

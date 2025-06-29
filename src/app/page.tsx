@@ -19,10 +19,10 @@ export default function Home() {
     } else {
       // Initial demo tasks
       setTasks([
-        { id: 'task-1', description: 'Brainstorm new features for Q3', dueDate: 'Next Monday', priority: 'medium', recommendedTime: 'Afternoon', completed: false },
-        { id: 'task-2', description: 'Finalize marketing budget, it is a high priority task', priority: 'high', recommendedTime: 'Morning', completed: false },
-        { id: 'task-3', description: 'Update the user documentation', priority: 'low', completed: false },
-        { id: 'task-4', description: 'Deploy staging server updates', priority: 'high', completed: true },
+        { id: 'task-1', description: '3분기 신규 기능 브레인스토밍', dueDate: '다음 주 월요일', priority: 'medium', recommendedTime: '오후', completed: false },
+        { id: 'task-2', description: '마케팅 예산 확정, 높은 우선순위의 작업입니다', priority: 'high', recommendedTime: '오전', completed: false },
+        { id: 'task-3', description: '사용자 문서 업데이트', priority: 'low', completed: false },
+        { id: 'task-4', description: '스테이징 서버 업데이트 배포', priority: 'high', completed: true },
       ]);
     }
   }, []);
@@ -85,7 +85,7 @@ export default function Home() {
             Tomoro AI
           </h1>
           <p className="text-muted-foreground mt-2 text-lg">
-            Describe your task, and let AI handle the details.
+            할 일을 입력하면, AI가 세부 사항을 처리해 드립니다.
           </p>
         </header>
 
@@ -103,7 +103,7 @@ export default function Home() {
         </section>
         
         <footer className="text-center mt-12 text-sm text-muted-foreground">
-          <p>Drag and drop to reorder tasks.</p>
+          <p>드래그 앤 드롭으로 작업 순서를 변경할 수 있습니다.</p>
         </footer>
       </main>
     </div>

@@ -44,8 +44,8 @@ export default function TaskList({ tasks, onToggleComplete, onDeleteTask, onReor
     return (
       <div className="text-center py-16 px-4 border-2 border-dashed rounded-lg">
         <FileText className="mx-auto h-12 w-12 text-muted-foreground" />
-        <h3 className="mt-4 text-lg font-medium">All clear!</h3>
-        <p className="mt-1 text-sm text-muted-foreground">Add a new task above to get started.</p>
+        <h3 className="mt-4 text-lg font-medium">모든 작업을 완료했습니다!</h3>
+        <p className="mt-1 text-sm text-muted-foreground">새로운 작업을 추가하여 시작하세요.</p>
       </div>
     );
   }
@@ -74,7 +74,7 @@ export default function TaskList({ tasks, onToggleComplete, onDeleteTask, onReor
       {completedTasks.length > 0 && pendingTasks.length > 0 && (
         <div className="flex items-center">
           <Separator className="flex-1" />
-          <span className="px-4 text-sm text-muted-foreground">Completed</span>
+          <span className="px-4 text-sm text-muted-foreground">완료됨</span>
           <Separator className="flex-1" />
         </div>
       )}

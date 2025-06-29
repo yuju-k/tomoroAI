@@ -1,26 +1,26 @@
 'use server';
 
 /**
- * @fileOverview Parses a natural language task into a structured task object.
+ * @fileOverview 자연어 작업을 구조화된 작업 객체로 파싱합니다.
  *
- * - parseTask - A function that parses the task and returns the structured task details.
- * - ParseTaskInput - The input type for the parseTask function.
- * - ParseTaskOutput - The return type for the parseTask function.
+ * - parseTask - 작업을 파싱하고 구조화된 작업 세부 정보를 반환하는 함수입니다.
+ * - ParseTaskInput - parseTask 함수의 입력 타입입니다.
+ * - ParseTaskOutput - parseTask 함수의 반환 타입입니다.
  */
 
 import {ai} from '@/ai/genkit';
 import {z} from 'genkit';
 
 const ParseTaskInputSchema = z.object({
-  task: z.string().describe('The task in natural language.'),
+  task: z.string().describe('자연어로 된 작업입니다.'),
 });
 export type ParseTaskInput = z.infer<typeof ParseTaskInputSchema>;
 
 const ParseTaskOutputSchema = z.object({
-  taskDescription: z.string().describe('The description of the task.'),
-  dueDate: z.string().optional().describe('The due date of the task, if specified.'),
-  priority: z.enum(['high', 'medium', 'low']).default('medium').describe('The priority of the task.'),
-  recommendedTime: z.string().optional().describe('A recommended time of day to do the task (e.g., Morning, Afternoon, Evening).'),
+  taskDescription: z.string().describe('작업에 대한 설명입니다.'),
+  dueDate: z.string().optional().describe('작업의 마감일입니다 (지정된 경우).'),
+  priority: z.enum(['high', 'medium', 'low']).default('medium').describe('작업의 우선순위입니다.'),
+  recommendedTime: z.string().optional().describe('작업을 수행하기 좋은 추천 시간대입니다 (예: 오전, 오후, 저녁).'),
 });
 export type ParseTaskOutput = z.infer<typeof ParseTaskOutputSchema>;
 
@@ -32,14 +32,14 @@ const prompt = ai.definePrompt({
   name: 'parseTaskPrompt',
   input: {schema: ParseTaskInputSchema},
   output: {schema: ParseTaskOutputSchema},
-  prompt: `You are a task parsing AI. Your job is to take in a task described in natural language, and parse it into a structured object with the following fields:
+  prompt: `당신은 작업 파싱 AI입니다. 당신의 임무는 자연어로 설명된 작업을 입력받아 다음 필드를 가진 구조화된 객체로 파싱하는 것입니다:
 
-- taskDescription: A short description of the task.
-- dueDate: The due date of the task, if specified. If no due date is specified, leave blank.
-- priority: The priority of the task. Must be one of 'high', 'medium', or 'low'. If not specified, default to 'medium'.
-- recommendedTime: Based on the nature of the task, suggest the best time of day to complete it (e.g., "Morning", "Afternoon", "Evening"). For example, tasks requiring focus are good for the Morning, and creative tasks for the Afternoon. Always provide a recommendation.
+- taskDescription: 작업에 대한 짧은 설명.
+- dueDate: 작업의 마감일 (지정된 경우). 마감일이 지정되지 않은 경우 비워 둡니다.
+- priority: 작업의 우선순위. 'high', 'medium', 'low' 중 하나여야 합니다. 지정되지 않은 경우 'medium'을 기본값으로 합니다.
+- recommendedTime: 작업의 성격에 따라 작업을 완료하기에 가장 좋은 시간대(예: "오전", "오후", "저녁")를 제안하세요. 예를 들어, 집중이 필요한 작업은 오전에, 창의적인 작업은 오후에 좋습니다. 항상 추천을 제공해야 합니다.
 
-Here is the task:
+다음은 작업입니다:
 
 {{task}}`,
 });
