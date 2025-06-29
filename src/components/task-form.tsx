@@ -30,7 +30,7 @@ function SubmitButton({ isAdding }: { isAdding: boolean }) {
   );
 }
 
-export default function TaskForm({ onTaskAdd }: TaskFormProps) {
+export default function TaskForm({ onTaskAdd, isAdding }: TaskFormProps) {
   const [state, formAction] = useFormState(addTaskAction, { error: null, data: null });
   const { toast } = useToast();
   const formRef = useRef<HTMLFormElement>(null);
@@ -61,7 +61,7 @@ export default function TaskForm({ onTaskAdd }: TaskFormProps) {
         />
         {state.error && <p className="text-sm text-destructive mt-1">{state.error}</p>}
       </div>
-      <SubmitButton isAdding={false} />
+      <SubmitButton isAdding={isAdding} />
     </form>
   );
 }

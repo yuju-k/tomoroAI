@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useTransition } from 'react';
+import { useState, useEffect, useTransition, useCallback } from 'react';
 import type { Task, Priority } from '@/lib/types';
 import TaskForm from '@/components/task-form';
 import TaskList from '@/components/task-list';
@@ -33,7 +33,7 @@ export default function Home() {
     }
   }, [tasks, isClient]);
 
-  const handleAddTask = (taskData: { description: string; dueDate?: string; priority: Priority }) => {
+  const handleAddTask = useCallback((taskData: { description: string; dueDate?: string; priority: Priority }) => {
     startTransition(() => {
       const newTask: Task = {
         ...taskData,
@@ -42,21 +42,21 @@ export default function Home() {
       };
       setTasks(prevTasks => [newTask, ...prevTasks]);
     });
-  };
+  }, []);
 
-  const handleToggleComplete = (id: string) => {
-    setTasks(tasks.map(task => 
+  const handleToggleComplete = useCallback((id: string) => {
+    setTasks(prevTasks => prevTasks.map(task => 
       task.id === id ? { ...task, completed: !task.completed } : task
     ));
-  };
+  }, []);
 
-  const handleDeleteTask = (id: string) => {
-    setTasks(tasks.filter(task => task.id !== id));
-  };
+  const handleDeleteTask = useCallback((id: string) => {
+    setTasks(prevTasks => prevTasks.filter(task => task.id !== id));
+  }, []);
   
-  const handleReorderTasks = (reorderedTasks: Task[]) => {
+  const handleReorderTasks = useCallback((reorderedTasks: Task[]) => {
     setTasks(reorderedTasks);
-  };
+  }, []);
 
   if (!isClient) {
     return (
