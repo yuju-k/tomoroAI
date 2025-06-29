@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useTransition, useCallback } from 'react';
+import { useState, useEffect, useCallback, useTransition } from 'react';
 import type { Task, Priority } from '@/lib/types';
 import TaskForm from '@/components/task-form';
 import TaskList from '@/components/task-list';
@@ -19,9 +19,9 @@ export default function Home() {
     } else {
       // Initial demo tasks
       setTasks([
-        { id: 'task-1', description: '3분기 신규 기능 브레인스토밍', dueDate: '다음 주 월요일', priority: 'medium', recommendedTime: '오후', completed: false },
-        { id: 'task-2', description: '마케팅 예산 확정, 높은 우선순위의 작업입니다', priority: 'high', recommendedTime: '오전', completed: false },
-        { id: 'task-3', description: '사용자 문서 업데이트', priority: 'low', completed: false },
+        { id: 'task-1', description: '3분기 신규 기능 브레인스토밍', dueDate: '다음 주 월요일', priority: 'medium', recommendedTime: '오후 3시', completed: false },
+        { id: 'task-2', description: '마케팅 예산 확정, 높은 우선순위의 작업입니다', priority: 'high', recommendedTime: '오전 10시', completed: false },
+        { id: 'task-3', description: '사용자 문서 업데이트', priority: 'low', recommendedTime: '오후 4시', completed: false },
         { id: 'task-4', description: '스테이징 서버 업데이트 배포', priority: 'high', completed: true },
       ]);
     }

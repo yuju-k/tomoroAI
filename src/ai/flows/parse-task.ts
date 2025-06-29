@@ -20,7 +20,7 @@ const ParseTaskOutputSchema = z.object({
   taskDescription: z.string().describe('작업에 대한 설명입니다.'),
   dueDate: z.string().optional().describe('작업의 마감일입니다 (지정된 경우).'),
   priority: z.enum(['high', 'medium', 'low']).default('medium').describe('작업의 우선순위입니다.'),
-  recommendedTime: z.string().optional().describe('작업을 수행하기 좋은 추천 시간대입니다 (예: 오전, 오후, 저녁).'),
+  recommendedTime: z.string().optional().describe('작업을 수행하기 좋은 추천 시간입니다 (예: "오전 7시", "오후 3시").'),
 });
 export type ParseTaskOutput = z.infer<typeof ParseTaskOutputSchema>;
 
@@ -37,7 +37,7 @@ const prompt = ai.definePrompt({
 - taskDescription: 작업에 대한 짧은 설명.
 - dueDate: 작업의 마감일 (지정된 경우). 마감일이 지정되지 않은 경우 비워 둡니다.
 - priority: 작업의 우선순위. 'high', 'medium', 'low' 중 하나여야 합니다. 지정되지 않은 경우 'medium'을 기본값으로 합니다.
-- recommendedTime: 작업의 성격에 따라 작업을 완료하기에 가장 좋은 시간대(예: "오전", "오후", "저녁")를 제안하세요. 예를 들어, 집중이 필요한 작업은 오전에, 창의적인 작업은 오후에 좋습니다. 항상 추천을 제공해야 합니다.
+- recommendedTime: 작업의 성격에 따라 작업을 완료하기에 가장 좋은 구체적인 시간(예: "오전 7시", "오후 3시")을 제안하세요. 예를 들어, 집중이 필요한 작업은 오전에, 창의적인 작업은 오후에 좋습니다. 항상 구체적인 시간으로 추천을 제공해야 합니다.
 
 다음은 작업입니다:
 
