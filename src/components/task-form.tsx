@@ -1,7 +1,7 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
-import { useFormState, useFormStatus } from 'react-dom';
+import { useEffect, useRef, useActionState } from 'react';
+import { useFormStatus } from 'react-dom';
 import { addTaskAction } from '@/app/actions';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -31,7 +31,7 @@ function SubmitButton({ isAdding }: { isAdding: boolean }) {
 }
 
 export default function TaskForm({ onTaskAdd, isAdding }: TaskFormProps) {
-  const [state, formAction] = useFormState(addTaskAction, { error: null, data: null });
+  const [state, formAction] = useActionState(addTaskAction, { error: null, data: null });
   const { toast } = useToast();
   const formRef = useRef<HTMLFormElement>(null);
 
