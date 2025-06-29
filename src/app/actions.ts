@@ -28,6 +28,7 @@ export async function addTaskAction(prevState: any, formData: FormData) {
         description: parsed.taskDescription,
         dueDate: parsed.dueDate,
         priority: parsed.priority as Priority,
+        recommendedTime: parsed.recommendedTime,
       }
     };
   } catch (error) {

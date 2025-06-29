@@ -19,8 +19,8 @@ export default function Home() {
     } else {
       // Initial demo tasks
       setTasks([
-        { id: 'task-1', description: 'Brainstorm new features for Q3', dueDate: 'Next Monday', priority: 'medium', completed: false },
-        { id: 'task-2', description: 'Finalize marketing budget, it is a high priority task', priority: 'high', completed: false },
+        { id: 'task-1', description: 'Brainstorm new features for Q3', dueDate: 'Next Monday', priority: 'medium', recommendedTime: 'Afternoon', completed: false },
+        { id: 'task-2', description: 'Finalize marketing budget, it is a high priority task', priority: 'high', recommendedTime: 'Morning', completed: false },
         { id: 'task-3', description: 'Update the user documentation', priority: 'low', completed: false },
         { id: 'task-4', description: 'Deploy staging server updates', priority: 'high', completed: true },
       ]);
@@ -33,7 +33,7 @@ export default function Home() {
     }
   }, [tasks, isClient]);
 
-  const handleAddTask = useCallback((taskData: { description: string; dueDate?: string; priority: Priority }) => {
+  const handleAddTask = useCallback((taskData: { description: string; dueDate?: string; priority: Priority; recommendedTime?: string; }) => {
     startTransition(() => {
       const newTask: Task = {
         ...taskData,

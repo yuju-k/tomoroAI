@@ -20,6 +20,7 @@ const ParseTaskOutputSchema = z.object({
   taskDescription: z.string().describe('The description of the task.'),
   dueDate: z.string().optional().describe('The due date of the task, if specified.'),
   priority: z.enum(['high', 'medium', 'low']).default('medium').describe('The priority of the task.'),
+  recommendedTime: z.string().optional().describe('A recommended time of day to do the task (e.g., Morning, Afternoon, Evening).'),
 });
 export type ParseTaskOutput = z.infer<typeof ParseTaskOutputSchema>;
 
@@ -36,6 +37,7 @@ const prompt = ai.definePrompt({
 - taskDescription: A short description of the task.
 - dueDate: The due date of the task, if specified.  If no due date is specified, leave blank.
 - priority: The priority of the task.  Must be one of 'high', 'medium', or 'low'.  If not specified, default to 'medium'.
+- recommendedTime: Suggest a good time of day to complete the task, like "Morning", "Afternoon", or "Evening". If not specified, leave blank.
 
 Here is the task:
 

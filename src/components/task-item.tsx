@@ -6,7 +6,7 @@ import { Checkbox } from '@/components/ui/checkbox';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
-import { ArrowUp, ArrowRight, ArrowDown, GripVertical, CalendarIcon, Trash2 } from 'lucide-react';
+import { ArrowUp, ArrowRight, ArrowDown, GripVertical, CalendarIcon, Trash2, Clock } from 'lucide-react';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 
 interface TaskItemProps {
@@ -63,6 +63,12 @@ export default function TaskItem({ task, onToggleComplete, onDeleteTask }: TaskI
             )}
           </div>
           <div className="flex items-center gap-2">
+            {task.recommendedTime && (
+              <Badge variant="outline" className="text-muted-foreground hidden sm:inline-flex items-center gap-1 font-normal">
+                <Clock className="h-3 w-3" />
+                {task.recommendedTime}
+              </Badge>
+            )}
             <Tooltip>
               <TooltipTrigger asChild>
                 <div className="hidden sm:block">

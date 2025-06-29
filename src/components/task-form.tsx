@@ -10,7 +10,7 @@ import { Sparkles, Loader2 } from 'lucide-react';
 import type { Priority } from '@/lib/types';
 
 interface TaskFormProps {
-  onTaskAdd: (taskData: { description: string; dueDate?: string; priority: Priority }) => void;
+  onTaskAdd: (taskData: { description: string; dueDate?: string; priority: Priority; recommendedTime?: string; }) => void;
   isAdding: boolean;
 }
 
