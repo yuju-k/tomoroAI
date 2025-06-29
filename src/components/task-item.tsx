@@ -64,7 +64,7 @@ export default function TaskItem({ task, onToggleComplete, onDeleteTask }: TaskI
           </div>
           <div className="flex items-center gap-2">
             {task.recommendedTime && (
-              <Badge variant="outline" className="text-muted-foreground hidden sm:inline-flex items-center gap-1 font-normal">
+              <Badge variant="outline" className="text-muted-foreground inline-flex items-center gap-1 font-normal">
                 <Clock className="h-3 w-3" />
                 {task.recommendedTime}
               </Badge>
